@@ -25,7 +25,7 @@ The following technologies are required in order to complete this phase of the p
 - **Postman**: Postman is used for testing RESTful APIs. We'll use it to set up collections of tests for the RESTful APIs we design throughout the program. It can also be used to quickly test a single endpoint.
 - **Visual Studio Code (Optional)**: Visual Studio Code is a text editor that makes viewing and modifying code simple. Do not confuse this tool with an integrated development environment as it does not come equipped with all of the development tools you typically find in an IDE. This tool is optional, but it can be helpful if you are new to programming and wish to familiarize yourself with the syntax of the Java programming language. 
 
-## Installation Methods
+## Installation
 
 **NOTE**: This guide primarily is written for those on a Windows Machine. For Mac users [this guide](https://github.com/sophiagavrila/mac-install-guide) may be more helpful. 
 

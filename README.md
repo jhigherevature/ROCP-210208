@@ -341,7 +341,9 @@ Once you navigate to the website, you should see the following:
 
 You'll notice that there are two options: Community Edition and Enterprise Edition. Please select the **Community Edition** as it is free. Do NOT select the Enterprise as it is not free.
 
-You will find the installers for the Community Edition if you scroll down the page. They should be located directly beneath the the box which says "Community Edition 7.1.1". As with all other software listed here, please make sure that you choose the correct installer for your system.
+Note that the newest versions of DBeaver require Java 11, as such, as will be using an older version that can be found in the Archives section. Scroll down to the "Archive" and click on the link. 
+
+Here, you will find links to previous versions with the installers for the Community Edition. Select the "7.1.1" folder and choose the appropriate installer. As with all other software listed here, please make sure that you choose the correct installer for your system. For windows users, you want to select the "dbeaver-ce-7.1.1-x86_64-setup.exe".
 
 Once you've clicked on the installer that is compatible with your system, you'll be prompted to save the file. Save it and note where you've saved it on your machine. These files are usually stored in your computer's "Downloads" folder by default.
 

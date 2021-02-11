@@ -1,0 +1,15 @@
+package whileLoopExercises;
+
+//For this exercise, you need to write a while loop 
+//that prints the numbers 1 through 10, inclusively 
+//each on a separate line.
+public class Exercise1 {
+
+	public static void main(String[] args) {
+		int count = 0;
+		while(count < 10) {
+			System.out.println(++count);
+		}
+	}
+
+}

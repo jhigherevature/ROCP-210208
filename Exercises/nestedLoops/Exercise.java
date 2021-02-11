@@ -18,6 +18,5 @@ public class Exercise {
 				"Tran" };
 		Exercise ex = new Exercise();
 		ex.getNames(firstNames, lastNames);
-
 	}
 }

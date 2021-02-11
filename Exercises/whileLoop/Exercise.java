@@ -28,7 +28,5 @@ public class Exercise {
 			if (number > 100)
 				break;
 		}
-
 	}
-
 }

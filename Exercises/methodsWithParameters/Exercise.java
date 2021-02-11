@@ -79,7 +79,7 @@ public class Exercise {
 
 		System.out.println(ex.findFirstWord("Dallas", "Irving"));
 
-		int[] a = { 3, 8, 9, 12, 8 };
+		int[] a = { 3, 8, 9, 12, 8, 11 };
 		int[] b = { 9, 5, 12, 20, 5, 8, 10 };
 		ex.displayArrayStatistics(a, b);
 	}

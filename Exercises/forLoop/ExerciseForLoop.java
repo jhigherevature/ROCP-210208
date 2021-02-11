@@ -1,6 +1,5 @@
 package forLoop;
 
-
 public class ExerciseForLoop {
 
 	public static void main(String[] args) {
@@ -10,12 +9,10 @@ public class ExerciseForLoop {
 		for (int i = 0; i < array.length; i++) {
 			System.out.println(array[i]);
 		}
-		
+
 		System.out.println("\nUsing for each loop");
-		for(int arr : array) {
+		for (int arr : array) {
 			System.out.println(arr);
 		}
-
 	}
-
 }

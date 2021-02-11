@@ -30,7 +30,5 @@ public class Exercise {
 		System.out.println(ex.getPi());
 		
 		System.out.println(Arrays.toString(ex.getAlphabetArray()));
-		
 	}
-
 }

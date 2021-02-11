@@ -18,5 +18,4 @@ public class Exercise {
 			letter++;
 		} while (letter <= 'z');
 	}
-
 }

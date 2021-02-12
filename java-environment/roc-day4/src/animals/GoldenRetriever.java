@@ -6,6 +6,7 @@ public class GoldenRetriever extends Dog {
 	}
 
 	public GoldenRetriever() {
+		super("Golden Retriever", 4);
 		System.out.println("GoldenRetriever Constructor");
 	}
 }

@@ -7,8 +7,8 @@ public class ScannerBasic {
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("Give me input:");
-		int i = scan.nextInt();
-		giveNumber();
+		String i = scan.nextLine();
+//		giveNumber();
 		System.out.println("You typed: " + i);
 	}
 	

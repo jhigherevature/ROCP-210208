@@ -10,7 +10,11 @@ public class Exercise2 {
 	public static void main(String[] args) {
 		int count =-100;
 		while(count <= 100) {
-			System.out.println(count++);
+			//System.out.println("ok");
+			while (count%2 == 0) {
+				System.out.println(count++);
+			}
+			count++;
 		}
 	}
 

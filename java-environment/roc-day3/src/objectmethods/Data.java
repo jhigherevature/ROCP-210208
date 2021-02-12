@@ -14,19 +14,19 @@ public class Data {
 //		return result;
 //	}
 	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Data other = (Data) obj;
-		if (value != other.value)
-			return false;
-		return true;
-	}
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		Data other = (Data) obj;
+//		if (value != other.value)
+//			return false;
+//		return true;
+//	}
 
 	@Override
 	public String toString() {
@@ -38,10 +38,10 @@ public class Data {
 //	}
 	
 	// our own custom implementation of the equals method
-//	public boolean equals(Object obj) {
-//		if (this.value == ((Data)obj).value) {
-//			return true;
-//		}
-//		return false;
-//	}
+	public boolean equals(Object obj) {
+		if (this.value == ((Data)obj).value) {
+			return true;
+		}
+		return false;
+	}
 }

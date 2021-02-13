@@ -112,7 +112,6 @@ You should be able to explain and apply the following topics:
   - Generic classes
   - Generic methods
   - Diamond operator and type inference
-- Serializable interface
 
 ### Exceptions
 - Class hierarchy

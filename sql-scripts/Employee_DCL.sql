@@ -3,20 +3,20 @@
  * because our DB will recognize that this user has certain
  * power to manipulate data within a specific table/tables 
  */
-revoke all privileges on examples.employees from joe;
+REVOKE ALL PRIVILEGES ON examples.employees FROM joe;
 -- we can use 'if exists' to check that the user exists before 
 -- dropping users as well
-drop user if exists joe;
+DROP USER IF EXISTS joe;
 
 --Use the create statement to create users as well
-create user joe with password 'password';
+CREATE USER joe WITH PASSWORD 'password';
 
 --GRANT <permission> ON <ENTITY> TO <USER_NAME>
-grant insert on examples.employees to joe;
-grant select, update, delete on examples.employees to joe;
+GRANT INSERT ON examples.employees TO joe;
+GRANT SELECT, UPDATE, DELETE ON examples.employees TO joe;
+GRANT USAGE ON SCHEMA examples TO joe;
 
-grant create on schema examples to joe;
+GRANT CREATE ON SCHEMA examples TO joe;
 --REVOKE <permission> ON <ENTITY> FROM <USER_NAME>
-revoke create on schema examples from joe;
-
+REVOKE CREATE ON SCHEMA examples FROM joe;
 

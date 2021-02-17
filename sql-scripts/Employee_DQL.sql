@@ -41,13 +41,23 @@ select emp_salary as "Money" from employees;
 /* LIKE */
 -- for strings the % is used for a wildcard for any number of characters
 select * from employees where lower(emp_name) like 's%a%';
+
+
+--emp_name = 'Dan' <-- WILL WORK
+--emp_name = 'Hal' <-- WILL WORK
+--emp_name = 'Aaron' <-- WILL WORK
+--emp_name = 'Heather' <-- NOT WORK
+SELECT * FROM EMPLOYEES WHERE lower(emp_name) LIKE '_a%';
+
 -- for strings the _ is used for a wildcard for a single character
 select * from employees where lower(emp_name) like 's_%a%';
 
 /* BETWEEN */
 --Use the 'AND' keyword to specify upper and lower limits of a BETWEEN operation
 select * from employees where emp_salary between 45000 and 75000;
+SELECT emp_name, emp_salary FROM employees WHERE emp_salary BETWEEN 50000 AND 70000;
 
 
 /* IN */
 select * from employees where lower(emp_title) in ('employee', 'supervisor');
+SELECT emp_name, emp_title FROM examples.employees WHERE lower(emp_title) IN ('supervisor');

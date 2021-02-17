@@ -1,9 +1,9 @@
-drop table if exists state cascade;
-drop table if exists sports cascade;
-drop table if exists team cascade;
-drop table if exists players cascade;
+DROP TABLE IS EXISTS state CASCADE;
+DROP TABLE IS EXISTS sports CASCADE;
+DROP TABLE IS EXISTS team CASCADE;
+DROP TABLE IS EXISTS players CASCADE;
 
-create table state (
+CREATE TABLE state (
 	state_id SERIAL,
 	state_name varchar(50),
 	

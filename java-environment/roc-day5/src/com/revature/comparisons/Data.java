@@ -12,7 +12,7 @@ public class Data implements Comparable<Data> {
 			return 1;
 		} else {
 			return 0;
-		}		
+		}
 	}
 	
 	public Data(int num) {
@@ -31,6 +31,4 @@ public class Data implements Comparable<Data> {
 	public String toString() {
 		return "["+this.num+"]";
 	}
-
-
 }

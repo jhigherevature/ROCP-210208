@@ -15,6 +15,10 @@ public class Application {
 		for (Employee e : employees) {
 			System.out.println(e);
 		}
+		
+//		Employee emp = new Employee(null,"Java Again!", 95000.00, "Developer");
+//		boolean didItWork = edao.insertIntoEmployees(emp);
+//		System.out.println(didItWork);
 	}
 
 }

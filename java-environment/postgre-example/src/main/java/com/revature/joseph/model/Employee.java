@@ -8,16 +8,16 @@ package com.revature.joseph.model;
  * utilize a Java Bean pattern when creating your model objects.
  */
 public class Employee {
-	private int emp_id;
+	private Integer emp_id;
 	private String emp_name;
-	private double emp_salary;
+	private Double emp_salary;
 	private String emp_title;
 	
 	public Employee() {
 		super();
 	}
 	
-	public Employee(int emp_id, String emp_name, double emp_salary, String emp_title) {
+	public Employee(Integer emp_id, String emp_name, Double emp_salary, String emp_title) {
 		super();
 		this.emp_id = emp_id;
 		this.emp_name = emp_name;
@@ -25,10 +25,10 @@ public class Employee {
 		this.emp_title = emp_title;
 	}
 	
-	public int getEmp_id() {
+	public Integer getEmp_id() {
 		return emp_id;
 	}
-	public void setEmp_id(int emp_id) {
+	public void setEmp_id(Integer emp_id) {
 		this.emp_id = emp_id;
 	}
 	
@@ -39,10 +39,10 @@ public class Employee {
 		this.emp_name = emp_name;
 	}
 	
-	public double getEmp_salary() {
+	public Double getEmp_salary() {
 		return emp_salary;
 	}
-	public void setEmp_salary(double emp_salary) {
+	public void setEmp_salary(Double emp_salary) {
 		this.emp_salary = emp_salary;
 	}
 	

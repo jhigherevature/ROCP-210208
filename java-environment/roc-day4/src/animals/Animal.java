@@ -11,6 +11,8 @@ public abstract class Animal {
 		this.age = age;
 	}
 	
+//	public abstract void breathe();
+	
 	public String toString() {
 		return "Animal Name: " + name + ", Animal type: " + type + ", Age: " + age;
 	}

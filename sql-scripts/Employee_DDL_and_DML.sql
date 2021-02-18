@@ -9,7 +9,7 @@
  * DDL - Data Definition Language
  */
 -- To create a Schema use the CREATE statement
---CREATE SCHEMA examples;
+CREATE SCHEMA examples;
 
 --Use the DROP statement to remove Schemas
 --CASCADE allows you to propagate changes across associated connections

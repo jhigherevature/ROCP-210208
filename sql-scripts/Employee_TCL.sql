@@ -1,3 +1,4 @@
+--TCL - Transaction Control Language
 select * from employees; -- 1
 delete from employees where emp_id=2000;
 delete from employees where emp_id=2001;
@@ -5,6 +6,11 @@ delete from employees where emp_id=2002;
 
 drop table employees;
 
+/*
+ * WITHOUT 'begin' and 'commit' you are not rolling multiple operations
+ * into a single transaction, you are instead performing isolated transactions
+ * on your database, and as such, do not have the room to utilize TCL commands
+ */
 begin;
 	-- you can create multiple savepoints
 	savepoint my_save_1;

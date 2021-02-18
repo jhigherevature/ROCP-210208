@@ -4,6 +4,7 @@
  * power to manipulate data within a specific table/tables 
  */
 REVOKE ALL PRIVILEGES ON examples.employees FROM joe;
+REVOKE ALL PRIVILEGES ON SCHEMA examples FROM joe;
 -- we can use 'if exists' to check that the user exists before 
 -- dropping users as well
 DROP USER IF EXISTS joe;

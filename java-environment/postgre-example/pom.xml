@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.revature.joseph</groupId>
+  <artifactId>postgre-example</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>postgre-example</name>
+  <description>Sample Maven Project for Postgre DB Connectivity</description>
+  
+  <!-- Most Markup Languages use this syntax for comments 
+  		This is a multi-line comment
+  	-->
+  
+  <!-- 
+	  XML stands for Extensible Markup File
+  		Markup files work by 'marking' certain information on the file
+  		in question, and applying certain context to that information,
+  		based on the markup tag used.
+   -->
+   
+   <!-- ANY TIME YOU MAKE A CHANGE TO A MAVEN POM FILE YOU MUST UPDATE THE PROJECT!
+   		1. right-click on project
+   		2. select Maven >> Update Project [default hotkey is ALT+F5]
+   	 -->
+  <properties>
+  	<!-- This informs maven of the JDK compiler version -->
+  	<maven.compiler.source>1.8</maven.compiler.source>  	
+  	<!-- This informs maven of the JRE library to use -->
+  	<maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+  
+  
+  <!-- The dependencies element dictates libaries that are required 
+  		for our project to function correctly -->
+  		
+  <dependencies>
+  	<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+	<dependency>
+	    <groupId>org.postgresql</groupId>
+	    <artifactId>postgresql</artifactId>
+	    <version>42.2.18</version>
+	</dependency>
+  </dependencies>
+  
+</project>

@@ -1,13 +1,20 @@
 package stringexamples;
 
 public class StringTiming {
-	static int n = 10000;
+	static int n = 100000;
 	public static void main(String[] args) {
 		createAlotOfStrings();
 		createAlotStringBuilder();
 		createAlotStringBuffer();
 	}
-	
+	/*
+	 * Strings are Immutable. When we create a string object, it cannot
+	 * be changed.
+	 * 
+	 * String a = "Hello";
+	 * a = a + "s"; // This creates new object
+	 * String b = a + "s"; // 'Hellos'
+	 */
 	public static void createAlotOfStrings() {
 		String s = "";
 		long timeInit = System.currentTimeMillis();

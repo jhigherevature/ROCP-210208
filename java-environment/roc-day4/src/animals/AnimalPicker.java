@@ -39,6 +39,13 @@ public class AnimalPicker {
 			if (anim instanceof Dog) {
 				((Dog) anim).bark();
 			}
+			boolean isUnderWater = true;
+			
+			if (anim != null && isUnderWater) {
+				if (anim instanceof Shark) {
+//					anim.breathe();
+				}
+			}
 
 			if (anim instanceof Herbivorous) {
 				((Herbivorous) anim).eat("Fruits");

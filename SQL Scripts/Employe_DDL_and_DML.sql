@@ -1,0 +1,56 @@
+/*
+ * This is for multi line comments
+ * all of this is in a comment
+ */
+
+-- This is a single line comment
+
+/*
+ * DDL - Data Definition Language
+ */
+
+-- To create a Schema, use the CREATE statement
+--create schema examples;
+
+-- Use the DROP statement to remove Schemas
+-- CASCADE allows you to propagate changes across associated connecitons
+--drop schema examples cascade;
+
+-- As its name implies, DROP <item> IF EXISTS will drop an entity if it already exists in our database
+drop table if exists examples.employees cascade;
+
+--CREATE A TABLE:
+create table examples.employees (
+-- <column_name> <column_type>,
+	emp_id INTEGER, -- ID will be used to identify employees
+	emp_name VARCHAR(50), -- VARCHAR is typically used for string data
+	emp_salary DECIMAL, 
+	emp_title VARCHAR(20)
+);
+
+/*
+ * DML - Data Manipulation Language
+ */
+-- in SQL, String data within queries should use single quotes
+insert into examples.employees values (1000, 'Patty', 120000, 'CEO');
+insert into examples.employees values (1001, 'Matt', 45000, 'employee');
+insert into examples.employees values (1002, 'Jill', 50000, 'employee');
+insert into examples.employees values (1003, 'Phil', 75000, 'supervisor');
+insert into examples.employees values (1004, 'Will', 55000, 'employee');
+insert into examples.employees values (1005, 'Bob', 80000, 'supervisor');
+insert into examples.employees values (1006, 'Sally', 52000, 'employee');
+--values inserted into tables are case sensitive
+insert into examples.employees values (1007, 'Sarah', 50000, 'Employee');
+insert into examples.employees values (1008, 'Bobby', 50000, 'Employee');
+
+-- you do not need the schema qualifier if you selected the schema in DBeaver specifically
+update employees set emp_name='Gill' where emp_id=1002;
+
+-- remove all records from employees table
+--delete from employees;
+--
+---- remove a specific record
+--delete from examples.employees where emp_id=1000;
+--delete from examples.employees where emp_title='employee';
+
+commit;

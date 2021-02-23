@@ -40,16 +40,32 @@ public class EmployeeDAOImpl_postgre implements EmployeeDAO {
 
 	@Override
 	public Employee selectEmployee(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		Employee emp = null;
+		ResultSet rs = null;
+		Statement stmt = null;
+		try (Connection conn = ConnectionUtility.getConnection()) {
+			stmt = conn.createStatement();
+			String str = "SELECT * FROM examples.employees WHERE emp_name = \'Jill\'";
+			rs = stmt.executeQuery(str);
+
+			while (rs.next()) {
+				emp = new Employee(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return emp;
 	}
 
 	@Override
 	public Boolean insertIntoEmployees(Employee emp) {
 		PreparedStatement ps = null;
 		try (Connection conn = ConnectionUtility.getConnection()) {
-			ps = conn.prepareStatement("INSERT INTO examples.employees VALUES(null,?,?,?)");
-
+			ps = conn.prepareStatement("INSERT INTO examples.employees "
+					+ "VALUES(null,?,?,?)");
+			
 			ps.setString(1, emp.getEmp_name());
 			ps.setDouble(2, emp.getEmp_salary());
 			ps.setString(3, emp.getEmp_title());
@@ -60,7 +76,6 @@ public class EmployeeDAOImpl_postgre implements EmployeeDAO {
 			e.printStackTrace();
 			return false;
 		}
-
 		return true;
 	}
 

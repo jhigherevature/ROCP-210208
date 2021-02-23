@@ -10,7 +10,9 @@ import com.revature.joseph.services.AuthenticationService;
 public class Application {
 
 	public static void main(String[] args) {
-//		EmployeeDAO edao = new EmployeeDAOImpl_postgre();
+		EmployeeDAO edao = new EmployeeDAOImpl_postgre();
+		Employee e = edao.selectEmployee("Hello");
+		System.out.println(e);
 //		List<Employee> employees = edao.selectAllEmployees();
 //		
 //		for (Employee e : employees) {
@@ -20,11 +22,12 @@ public class Application {
 //		boolean didItWork = edao.insertIntoEmployees(emp);
 //		System.out.println(didItWork);
 		
-		AuthenticationService auth = new AuthenticationService();
-		auth.authenticate("patCeo", "pass");
-		// SELECT * FROM examples.login WHERE login.login_name = "patCEO" AND login_pass = "pass";
-		auth.authenticate("merrymatt", "pass");
-		auth.authenticate("philyTheKid", "pass");
+		
+//		AuthenticationService auth = new AuthenticationService();
+//		auth.authenticate("patCeo", "pass");
+//		// SELECT * FROM examples.login WHERE login.login_name = "patCEO" AND login_pass = "pass";
+//		auth.authenticate("merrymatt", "pass");
+//		auth.authenticate("philyTheKid", "pass");
 
 	}
 

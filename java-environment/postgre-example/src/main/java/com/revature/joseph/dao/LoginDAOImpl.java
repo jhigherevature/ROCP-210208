@@ -35,6 +35,7 @@ public class LoginDAOImpl implements LoginDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
+		} finally {
 		}
 		return emp;
 	}

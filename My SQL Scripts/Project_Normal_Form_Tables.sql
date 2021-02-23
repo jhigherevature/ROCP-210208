@@ -12,12 +12,12 @@ insert into project.cardtype values (default,'Instant');
 insert into project.cardtype values (default,'Land');
 insert into project.cardtype values (default,'Planeswalker');
 insert into project.cardtype values (default,'Sorcery');
-
+insert into project.cardtype values (default,'Artifact Creature');
 
 drop table if exists project.supertype cascade;
 create table project.supertype (
-	type_id SERIAL primary key,
-	type_name VARCHAR (50)
+	supertype_id SERIAL primary key,
+	supertype_name VARCHAR (50)
 );
 
 insert into project.supertype values (0,'None');
@@ -27,8 +27,8 @@ insert into project.supertype values (default,'Legendary');
 
 drop table if exists project.cardcolor cascade;
 create table project.cardcolor (
-	type_id SERIAL primary key,
-	type_name VARCHAR (50)
+	color_id SERIAL primary key,
+	color_name VARCHAR (50)
 );
 
 insert into project.cardcolor values (default,'White');
@@ -49,4 +49,22 @@ insert into project.cardcolor values (default,'Red/Green');
 insert into project.cardcolor values (default,'Colorless');
 
 
+drop table if exists project.rarity cascade;
+create table project.rarity (
+	rarity_id SERIAL primary key,
+	rarity_name VARCHAR (50)
+);
 
+insert into project.rarity values (default,'common');
+insert into project.rarity values (default,'uncommon');
+insert into project.rarity values (default,'rare');
+insert into project.rarity values (default,'mythic rare');
+
+
+drop table if exists project.cardset cascade;
+create table project.cardset (
+	cardset_id SERIAL primary key,
+	cardset_name VARCHAR (50)
+);
+
+insert into project.cardset values(default,'Theros: Beyond Death');

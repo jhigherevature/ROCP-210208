@@ -40,14 +40,14 @@ select emp_salary as "Money" from employees;
 
 /* LIKE */
 -- for strings the % is used for a wildcard for any number of characters
-select * from employees where lower(emp_name) like 's%a%';
+select * from employees where lower(emp_name) like '%a%';
 
 
 --emp_name = 'Dan' <-- WILL WORK
 --emp_name = 'Hal' <-- WILL WORK
 --emp_name = 'Aaron' <-- WILL WORK
 --emp_name = 'Heather' <-- NOT WORK
-SELECT * FROM EMPLOYEES WHERE lower(emp_name) LIKE '_a%';
+SELECT * FROM EMPLOYEES WHERE lower(emp_name) LIKE '___a%';
 
 -- for strings the _ is used for a wildcard for a single character
 select * from employees where lower(emp_name) like 's_%a%';

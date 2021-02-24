@@ -15,6 +15,12 @@ public class SingletonSimulator {
 
 	public static void main(String[] args) {
 		// Cannot create objects using private constructor
+		
+		for (int i = 0; i < 1000; i++) {
+			System.out.println(i);
+		}
+		
+		
 //		LazySingleton single = new LazySingleton();
 		LazySingleton lazy1 = LazySingleton.getTheSingletonNow();
 		LazySingleton lazy2 = LazySingleton.getTheSingletonNow();

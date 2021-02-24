@@ -16,4 +16,4 @@ SELECT ('Hello ' || 'World!'); -- String concatenation in SQL is performed with 
 
 --MATHEMATICAL FUNCTIONS:
 SELECT ABS(emp_salary) FROM EMPLOYEES;
-SELECT ABS(-175);
+SELECT ABS(-175) AS "ABSOLUTE";

@@ -10,6 +10,7 @@ package com.revature.joseph.designpatterns;
 public class LazySingleton {
 	private int value;
 	
+	// by default, reference variable values are null
 	private static LazySingleton mySingleton;
 	
 	/* 

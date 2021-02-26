@@ -7,7 +7,7 @@ SELECT p.player_name, t.team_name FROM players AS p INNER JOIN team AS t ON p.te
 SELECT * FROM players p FULL OUTER JOIN team t ON p.player_id = t.team_id;
 
 --LEFT
-SELECT * FROM players p LEFT JOIN team t ON p.player_id = t.team_id;
+SELECT p.PLAYER_ID, p.PLAYER_SALARY, t.TEAM_ID, t.TEAM_SPORT FROM players p LEFT JOIN team t ON p.player_id = t.team_id;
 
 --RIGHT
 SELECT * FROM players p RIGHT JOIN team t ON p.player_id = t.team_id;
@@ -17,14 +17,16 @@ SELECT * FROM players p RIGHT JOIN team t ON p.player_id = t.team_id;
 --UNION:
 SELECT player_id AS "ID", player_name AS "Name" FROM players UNION SELECT team_id, team_name FROM team;
 --SELECT * FROM players UNION SELECT * FROM team; -- This gives an error because team and players have different # of columns
-
+SELECT player_id AS "ID" FROM players UNION SELECT team_id FROM team;
 
 --INTERSECT:
 SELECT player_id AS "ID", player_name AS "Name" FROM players INTERSECT SELECT team_id, team_name FROM team;
+SELECT player_id AS "ID" FROM players INTERSECT SELECT team_id FROM team;
 
 --Except:
 SELECT player_id AS "ID", player_name AS "Name" FROM players EXCEPT SELECT team_id, team_name FROM team;
 SELECT team_id AS "ID", team_name AS "Name" FROM team EXCEPT SELECT player_id, player_name FROM players;
+SELECT player_id AS "ID" FROM players EXCEPT SELECT team_id FROM team;
 
 --Sub queries:
 --Using SELECT AVG(player_salary) FROM players reveals an average salary of about ~590000

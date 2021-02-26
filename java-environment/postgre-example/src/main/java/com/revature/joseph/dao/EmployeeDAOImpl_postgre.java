@@ -97,9 +97,12 @@ public class EmployeeDAOImpl_postgre implements EmployeeDAO {
 			ps = conn.prepareStatement("INSERT INTO examples.employees "
 					+ "VALUES(null,?,?,?)");
 			
-			ps.setString(1, emp.getEmp_name());
+			// INSERT INTO employeess VALUES (emp_id, emp_name, emp_salary, emp_title);
+			// INSERT INTO employees VALUES (14, "John", 7604190.00, "Worker");
 			ps.setDouble(2, emp.getEmp_salary());
 			ps.setString(3, emp.getEmp_title());
+			ps.setString(1, emp.getEmp_name());
+
 
 			ps.executeUpdate();
 
@@ -153,8 +156,31 @@ public class EmployeeDAOImpl_postgre implements EmployeeDAO {
 
 	@Override
 	public Boolean removeEmployee(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		PreparedStatement ps = null;
+		try (Connection conn = ConnectionUtility.getConnection();){
+			String sql = "DELETE FROM examples.employees WHERE emp_id=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+
+			/*
+			 * the executeUpdate method will return a numerical value associated 
+			 * with how many rows were effected by an insert/update/delete 
+			 * operation
+			 * 
+			 * i.e: if 15 rows were effected, then 15 will be returned by executeUpdate()
+			 * 
+			 * If No rows were effected, this would indicate the query was either
+			 * not successful, or information was not correctly provided
+			 */
+			if (ps.executeUpdate() == 0)
+				return false;
+			else
+				return true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override

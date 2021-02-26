@@ -45,12 +45,13 @@ insert into examples.employees values (1008, 'Bobby', 50000, 'Employee');
 
 --You do not need the schema qualifier if you have selected the schema in DBeaver specifically
 update employees set emp_name='Gill' where emp_id=1002;
+UPDATE examples.employees SET EMP_SALARY=100000000 WHERE emp_id = 1000;
 
 --Remove all records from employees table
 --delete from examples.employees;
 
 --Remove a specific record
 --delete from examples.employees where emp_title='employee';
---delete from examples.employees where emp_id=1000;
+delete from examples.employees where emp_id=1000;
 
 commit;

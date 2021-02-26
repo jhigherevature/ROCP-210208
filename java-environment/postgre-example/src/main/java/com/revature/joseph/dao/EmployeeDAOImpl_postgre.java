@@ -36,7 +36,12 @@ public class EmployeeDAOImpl_postgre implements EmployeeDAO {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				emp = new Employee(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4));
+				emp = new Employee(
+						rs.getInt(1), 
+						rs.getString(2), 
+						rs.getDouble(3), 
+						rs.getString(4)
+						);
 			}
 
 		} catch (SQLException e) {

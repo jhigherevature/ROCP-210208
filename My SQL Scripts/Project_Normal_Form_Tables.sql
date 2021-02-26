@@ -68,3 +68,15 @@ create table project.cardset (
 );
 
 insert into project.cardset values(default,'Theros: Beyond Death');
+
+
+drop table if exists project.user_email cascade;
+create table project.user_email (
+	email_id SERIAL primary key,
+	user_email VARCHAR(50)
+);
+
+insert into project.user_email values (default, 'carlos@email.com');
+insert into project.user_email values (default, 'colin@email.com');
+
+

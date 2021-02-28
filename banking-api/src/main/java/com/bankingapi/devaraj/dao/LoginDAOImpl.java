@@ -8,64 +8,84 @@ import java.sql.SQLException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.bankingapi.devaraj.models.Customer;
-import com.bankingapi.devaraj.models.Employee;
-import com.bankingapi.devaraj.utilities.ConnectionUtility;
+import com.bankingapi.devaraj.model.LoginDetail;
+import com.bankingapi.devaraj.utility.ConnectionUtility;
 
 public class LoginDAOImpl implements LoginDAO {
 
-	public static Logger log = LogManager.getLogger(LoginDAOImpl.class);
+	public static Logger log = LogManager.getLogger(UserDAOImpl.class);
 
 	@Override
-	public Employee getEmployeeByLogin(String name, String pass) {
-		log.info("getEmployeeByLogin invoked!");
-		Employee emp = null;
-		ResultSet rs = null;
+	public boolean createLogin(LoginDetail login) {
+		log.info("create Login invoked");
 		PreparedStatement ps = null;
-		EmployeeDAO eDao = ConnectionUtility.getEmployeeDAO();
+
 		try (Connection conn = ConnectionUtility.getConnection()) {
-			ps = conn.prepareStatement("SELECT * FROM examples.login WHERE login_name=? AND login_pass=?");
-			ps.setString(1, name);
-			ps.setString(2, pass);
+			log.info("successfully connected to data base");
+			ps = conn.prepareStatement("INSERT INTO bankapi.login_details VALUES(default, ?,?,?)");
+			ps.setString(1, login.getLogin_user_name());
+			ps.setString(2, login.getLogin_password());
+			ps.setInt(3, login.getUser_role());
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			log.debug("create account type failed");
+			e.printStackTrace();
+			return false;
+		}
+		log.info("create account type success");
+		return true;
+	}
+
+	@Override
+	public int getLoginid(String user, String password) {
+		log.info("create Login id invoked");
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int userId = 0;
+		try (Connection conn = ConnectionUtility.getConnection()) {
+			log.info("successfully connect to data base");
+			ps = conn.prepareStatement(
+					"SELECT login_details_id FROM bankapi.login_details WHERE login_user_name =? AND login_password = ?");
+			ps.setString(1, user);
+			ps.setString(2, password);
 			rs = ps.executeQuery();
-
 			while (rs.next()) {
-				emp = eDao.selectEmployee(rs.getInt(2));
+				userId = rs.getInt("login_details_id");
 			}
-
 		} catch (SQLException e) {
+			log.debug("get login id failed");
 			e.printStackTrace();
-			return null;
-		} finally {
 		}
-		return emp;
+		log.info("get login id completed");
+		return userId;
 	}
 
 	@Override
-	public Customer getCustomerLogin(String name, String pass) {
-		log.info("getEmployeeByLogin invoked!");
-		Customer cust = null;
+	public boolean getCustomerLogin(String usereName, String Password, String user) {
+		log.info("get customer login invoked!");
 		ResultSet rs = null;
 		PreparedStatement ps = null;
+		boolean loginStatus = false;
 		try (Connection conn = ConnectionUtility.getConnection()) {
-
+			log.info("successfully connected to data base");
+			ps = conn.prepareStatement(
+					"SELECT * FROM bankapi.login_details "
+					+ "JOIN bankapi.users on bankapi.users.user_id = bankapi.login_details.user_role "
+					+ "WHERE login_user_name = ? AND login_password = ?");
+			ps.setString(1, usereName);
+			ps.setString(2, Password);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				if (rs.getString("login_user_name").equalsIgnoreCase(usereName)
+						&& rs.getString("login_password").equals(Password) && rs.getString("user_role").equals(user)) {
+					loginStatus = true;
+				}
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return null;
-		} finally {
+			return false;
 		}
-		return cust;
-	}
-
-	@Override
-	public boolean createEmployeeLogin(String name, String pass) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean creteCustomerLogin(String name, String pass) {
-		// TODO Auto-generated method stub
-		return false;
+		return loginStatus;
 	}
 }

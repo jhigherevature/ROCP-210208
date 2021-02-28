@@ -1,12 +1,11 @@
 package com.bankingapi.devaraj.dao;
 
-import com.bankingapi.devaraj.models.Customer;
-import com.bankingapi.devaraj.models.Employee;
+import com.bankingapi.devaraj.model.LoginDetail;
 
 public interface LoginDAO {
 	
-	public Employee getEmployeeByLogin(String name, String pass);
-	public Customer getCustomerLogin(String name, String pass);
-	public boolean createEmployeeLogin(String name, String pass);
-	public boolean creteCustomerLogin(String name, String pass);
+	public boolean createLogin(LoginDetail login);
+	public int getLoginid(String user, String password);
+	public boolean getCustomerLogin(String usereName, String Password, String user);
+
 }

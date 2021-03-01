@@ -8,7 +8,7 @@ create table project.carlos (
 	num_owned INTEGER,
 	num_fortrade INTEGER,
 	num_wanted INTEGER,
-	user_email INTEGER references user_email(email_id) on delete cascade
+	player_id INTEGER references players(player_id) on delete cascade
 );
 
 insert into project.carlos values (1,10,5,0,1);
@@ -36,7 +36,7 @@ create table project.colin (
 	num_owned INTEGER,
 	num_fortrade INTEGER,
 	num_wanted INTEGER,
-	user_email INTEGER references user_email(email_id) on delete cascade
+	player_id INTEGER references players(player_id) on delete cascade
 );
 
 insert into project.colin values (1,2,2,0,2);
@@ -53,3 +53,16 @@ insert into project.colin values (93,3,0,1,2);
 insert into project.colin values (99,0,0,4,2);
 insert into project.colin values (119,2,0,2,2);
 insert into project.colin values (231,1,0,4,2);
+
+drop table if exists project.login cascade;
+create table project.login (
+	player_id INTEGER references players(player_id) on delete cascade,
+	player_name VARCHAR (50),
+	player_pass VARCHAR (50)
+);
+
+insert into project.login values (1, 'Carlos', 'carlos');
+insert into project.login values (2, 'Colin', 'colin');
+insert into project.login values (3, 'Brian', 'brian');
+
+

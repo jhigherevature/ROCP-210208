@@ -1,6 +1,6 @@
 package com.revature.joseph.model;
 
-/*
+/* 
  * Model Objects should mirror how the information would look in our 
  * database, on a per-record basis.
  * 
@@ -57,15 +57,13 @@ public class Employee {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + emp_id;
+		result = prime * result + ((emp_id == null) ? 0 : emp_id.hashCode());
 		result = prime * result + ((emp_name == null) ? 0 : emp_name.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(emp_salary);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((emp_salary == null) ? 0 : emp_salary.hashCode());
 		result = prime * result + ((emp_title == null) ? 0 : emp_title.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -75,14 +73,20 @@ public class Employee {
 		if (getClass() != obj.getClass())
 			return false;
 		Employee other = (Employee) obj;
-		if (emp_id != other.emp_id)
+		if (emp_id == null) {
+			if (other.emp_id != null)
+				return false;
+		} else if (!emp_id.equals(other.emp_id))
 			return false;
 		if (emp_name == null) {
 			if (other.emp_name != null)
 				return false;
 		} else if (!emp_name.equals(other.emp_name))
 			return false;
-		if (Double.doubleToLongBits(emp_salary) != Double.doubleToLongBits(other.emp_salary))
+		if (emp_salary == null) {
+			if (other.emp_salary != null)
+				return false;
+		} else if (!emp_salary.equals(other.emp_salary))
 			return false;
 		if (emp_title == null) {
 			if (other.emp_title != null)
@@ -91,7 +95,7 @@ public class Employee {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Employee [emp_id=" + emp_id + ", emp_name=" + emp_name + ", emp_salary=" + emp_salary + ", emp_title="

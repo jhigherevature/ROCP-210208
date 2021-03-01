@@ -17,3 +17,16 @@ INSERT INTO login VALUES (DEFAULT, 1006, 'philyTheKid', 'pass');
 
 --Remember to grant permissions!
 GRANT INSERT, SELECT, UPDATE, DELETE ON examples.login TO joe;
+
+
+SELECT * FROM examples.employees;
+
+
+
+CREATE TABLE dummy (
+	info VARCHAR(20)
+);
+
+INSERT INTO dummy VALUES ("Test 1");
+INSERT INTO dummy VALUES ("Test 2");
+INSERT INTO dummy VALUES ("Test 3");

@@ -13,6 +13,8 @@ import com.revature.joseph.dao.LoginDAOImpl;
  * to the database!
  */
 public class ConnectionUtility {
+	
+	
 	public static Connection getConnection() throws SQLException {
 		/*
 		 * The getConnection method of the DriverManager
@@ -28,14 +30,16 @@ public class ConnectionUtility {
 	}
 	
 	// This main method is used to test our connection!
-//	public static void main(String[] args) {
-//		try (Connection conn = ConnectionUtility.getConnection()) {
-//			System.out.println("The Connection was successful!");
-//		} catch(SQLException e) {
-//			System.out.println("An Error Occured");
-//			e.printStackTrace();
-//		}
-//	}
+	public static void main(String[] args) {
+		// try with resources allows you to pass a resource argument to a try statement
+		// in this case the
+		try (Connection conn = ConnectionUtility.getConnection()) {
+			System.out.println("The Connection was successful!"); // if this works, our connection was estbalished
+		} catch(SQLException e) {
+			System.out.println("An Error Occured");
+			e.printStackTrace();
+		}
+	}
 	
 	/* static method used to get employee dao impl objects instead of 
 	 * creating them directly...We can also add logic to determine which

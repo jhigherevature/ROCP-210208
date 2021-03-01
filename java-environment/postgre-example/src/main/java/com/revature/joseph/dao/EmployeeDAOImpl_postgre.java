@@ -2,6 +2,7 @@ package com.revature.joseph.dao;
 
 import java.sql.Statement;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
@@ -19,16 +20,28 @@ public class EmployeeDAOImpl_postgre implements EmployeeDAO {
 
 	@Override
 	public Employee selectEmployee(Integer id) {
+		// This is our model that represents the data from our database
 		Employee emp = null;
+		
+		// The ResultSet is a representation of the data from our DB
 		ResultSet rs = null;
+		
+		// JDBC offers 3 statements, Simple, Prepared and Callable. We use
+		// PreparedStatements when we want to pass parameters to the statement itself
 		PreparedStatement ps = null;
 		try (Connection conn = ConnectionUtility.getConnection()) {
+			// SELECT * FROM examples.employees WHERE emp_id = 1000;
 			ps = conn.prepareStatement("SELECT * FROM examples.employees WHERE emp_id=?");
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				emp = new Employee(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4));
+				emp = new Employee(
+						rs.getInt(1), 
+						rs.getString(2), 
+						rs.getDouble(3), 
+						rs.getString(4)
+						);
 			}
 
 		} catch (SQLException e) {
@@ -40,22 +53,40 @@ public class EmployeeDAOImpl_postgre implements EmployeeDAO {
 
 	@Override
 	public Employee selectEmployee(String name) {
-		Employee emp = null;
-		ResultSet rs = null;
-		Statement stmt = null;
-		try (Connection conn = ConnectionUtility.getConnection()) {
-			stmt = conn.createStatement();
-			String str = "SELECT * FROM examples.employees WHERE emp_name = \'Jill\'";
-			rs = stmt.executeQuery(str);
-
+		Employee emp = new Employee();
+		
+		// Try to connect to DB, and if so perform try block
+		try {
+			Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "joe", "password");
+			// prepared statements use a '?' to indicate a parameter marker for values to 
+			// be inserted later in your sql statement
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM examples.employees WHERE emp_name =?");
+			ps.setString(1, name);
+			ResultSet rs = ps.executeQuery();
+			
+			// Look at the values from the result set, and use the set methods to
+			// populate the appropriate fields
 			while (rs.next()) {
-				emp = new Employee(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4));
+				// When we use the get methods for our result set
+				// we reference the column associated from our table
+				// in our case:
+				// emp_id is column 1
+				// emp_name is column 2
+				// emp_salary is column 3
+				// emp_title is column 4
+				emp.setEmp_id(rs.getInt(1));
+				emp.setEmp_name(rs.getString(2));
+				emp.setEmp_salary(rs.getDouble(3));
+				emp.setEmp_title(rs.getString(4));
 			}
-
+			
+			// If the DB connection fails, we want to...
 		} catch (SQLException e) {
+			System.out.println("Something went wrong when trying to contact DB");
 			e.printStackTrace();
 			return null;
-		}
+		}		
+		// We want to return the created employee at the end of the method...
 		return emp;
 	}
 
@@ -66,9 +97,12 @@ public class EmployeeDAOImpl_postgre implements EmployeeDAO {
 			ps = conn.prepareStatement("INSERT INTO examples.employees "
 					+ "VALUES(null,?,?,?)");
 			
-			ps.setString(1, emp.getEmp_name());
+			// INSERT INTO employeess VALUES (emp_id, emp_name, emp_salary, emp_title);
+			// INSERT INTO employees VALUES (14, "John", 7604190.00, "Worker");
 			ps.setDouble(2, emp.getEmp_salary());
 			ps.setString(3, emp.getEmp_title());
+			ps.setString(1, emp.getEmp_name());
+
 
 			ps.executeUpdate();
 
@@ -122,8 +156,31 @@ public class EmployeeDAOImpl_postgre implements EmployeeDAO {
 
 	@Override
 	public Boolean removeEmployee(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		PreparedStatement ps = null;
+		try (Connection conn = ConnectionUtility.getConnection();){
+			String sql = "DELETE FROM examples.employees WHERE emp_id=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+
+			/*
+			 * the executeUpdate method will return a numerical value associated 
+			 * with how many rows were effected by an insert/update/delete 
+			 * operation
+			 * 
+			 * i.e: if 15 rows were effected, then 15 will be returned by executeUpdate()
+			 * 
+			 * If No rows were effected, this would indicate the query was either
+			 * not successful, or information was not correctly provided
+			 */
+			if (ps.executeUpdate() == 0)
+				return false;
+			else
+				return true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override

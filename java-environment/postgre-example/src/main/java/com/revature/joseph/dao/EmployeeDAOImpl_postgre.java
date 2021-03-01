@@ -29,10 +29,14 @@ public class EmployeeDAOImpl_postgre implements EmployeeDAO {
 		// JDBC offers 3 statements, Simple, Prepared and Callable. We use
 		// PreparedStatements when we want to pass parameters to the statement itself
 		PreparedStatement ps = null;
+		
 		try (Connection conn = ConnectionUtility.getConnection()) {
 			// SELECT * FROM examples.employees WHERE emp_id = 1000;
-			ps = conn.prepareStatement("SELECT * FROM examples.employees WHERE emp_id=?");
+			ps = conn.prepareStatement("SELECT * FROM examples.employees WHERE emp_id=? AND emp_name = ?");
+
+			ps.setString(2,"Test");
 			ps.setInt(1, id);
+
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -99,12 +103,11 @@ public class EmployeeDAOImpl_postgre implements EmployeeDAO {
 			
 			// INSERT INTO employeess VALUES (emp_id, emp_name, emp_salary, emp_title);
 			// INSERT INTO employees VALUES (14, "John", 7604190.00, "Worker");
+			ps.setString(1, emp.getEmp_name());
 			ps.setDouble(2, emp.getEmp_salary());
 			ps.setString(3, emp.getEmp_title());
-			ps.setString(1, emp.getEmp_name());
 
-
-			ps.executeUpdate();
+			ps.executeUpdate(); // This is what sends and executes the query on the DB
 
 		} catch (SQLException e) {
 			e.printStackTrace();

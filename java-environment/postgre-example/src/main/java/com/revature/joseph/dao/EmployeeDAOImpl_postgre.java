@@ -89,7 +89,7 @@ public class EmployeeDAOImpl_postgre implements EmployeeDAO {
 			System.out.println("Something went wrong when trying to contact DB");
 			e.printStackTrace();
 			return null;
-		}		
+		}
 		// We want to return the created employee at the end of the method...
 		return emp;
 	}

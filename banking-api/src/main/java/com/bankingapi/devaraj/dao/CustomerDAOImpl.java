@@ -62,9 +62,21 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public boolean deleteCustomerAccount(Customer accountNumber) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteCustomerfromPendingApproval(int customerId) {
+		log.info("delete customer from pending approval invoked");
+		PreparedStatement ps = null;
+		try (Connection conn = ConnectionUtility.getConnection()) {
+			log.info("delete customer from pending approval invoked");
+			ps = conn.prepareStatement("DELETE FROM bankapi.pending_approvals where customer_id = ? ");
+			ps.setInt(1, customerId);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			log.debug("get customer from pending approval failed");
+			e.printStackTrace();
+			return false;
+		}
+		log.info("delete customer from pending approval completed");
+		return true;
 	}
 
 	@Override
@@ -93,7 +105,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public List<CustomerAccountDetails> getCustomerAccountsDetails(String username, String password) {
-		// if the customers has more than one account
+		// if the customer has more than one accounts Eg: saving and checking
 		log.info("get customer account details invoked");
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -131,12 +143,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 		}
 		log.info("get customer account details completed");
 		return customerDetail;
-	}
-
-	@Override
-	public List<CustomerAccountDetails> getAllCustomersAccountDetails() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -243,6 +249,12 @@ public class CustomerDAOImpl implements CustomerDAO {
 		}
 		log.info("update account balance by account number completed");
 		return false;
+	}
+
+	@Override
+	public List<CustomerAccountDetails> getAllCustomersAccountDetails() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -25,7 +25,7 @@ public class UserDAOImpl implements UserDAO {
 
 		try (Connection conn = ConnectionUtility.getConnection()) {
 			log.info("successfully connected to data base");
-			ps = conn.prepareStatement("INSERT INTO bankapi.users (user_role) VALUES(?);");
+			ps = conn.prepareStatement("INSERT INTO bankapi.users (usr_role) VALUES(?);");
 			ps.setString(1, user.getUser_role());
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -52,7 +52,7 @@ public class UserDAOImpl implements UserDAO {
 			while (rs.next()) {
 				User user = new User();
 				user.setUser_id(rs.getInt("user_id"));
-				user.setUser_role(rs.getString("user_role"));
+				user.setUser_role(rs.getString("usr_role"));
 				users.add(user);
 			}
 
@@ -93,7 +93,7 @@ public class UserDAOImpl implements UserDAO {
 		int userId = 0;
 		try (Connection conn = ConnectionUtility.getConnection()) {
 			log.info("successfully connected to data base");
-			ps = conn.prepareStatement("SELECT user_id FROM bankapi.users WHERE user_role =?");
+			ps = conn.prepareStatement("SELECT user_id FROM bankapi.users WHERE usr_role =?");
 			ps.setString(1, user);
 			rs = ps.executeQuery();
 			while (rs.next()) {

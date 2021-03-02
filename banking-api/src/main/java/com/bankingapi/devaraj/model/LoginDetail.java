@@ -17,12 +17,17 @@ public class LoginDetail {
 		this.login_password = login_password;
 		this.user_role = user_role;
 	}
-	
+
 	public LoginDetail(String login_user_name, String login_password, int user_role) {
 		super();
 		this.login_user_name = login_user_name;
 		this.login_password = login_password;
 		this.user_role = user_role;
+	}
+
+	public LoginDetail(int login_details_id) {
+		super();
+		this.login_details_id = login_details_id;
 	}
 
 	public int getLogin_details_id() {

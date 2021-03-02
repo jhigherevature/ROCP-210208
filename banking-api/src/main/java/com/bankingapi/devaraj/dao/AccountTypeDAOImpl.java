@@ -94,7 +94,7 @@ public class AccountTypeDAOImpl implements AccountTypeDAO {
 
 		try (Connection conn = ConnectionUtility.getConnection()) {
 			log.info("successfully connected to data base");
-			ps = conn.prepareStatement("INSERT INTO bankapi.customer_account_type VALUES(default,?,?)");
+			ps = conn.prepareStatement("INSERT INTO bankapi.tmp_account VALUES(default,?,?)");
 			ps.setInt(1, customerAccount.getCustomer_id());
 			ps.setInt(2, customerAccount.getAccount_type());
 			ps.executeUpdate();
@@ -107,5 +107,4 @@ public class AccountTypeDAOImpl implements AccountTypeDAO {
 		log.info("insert customer account type success");
 		return true;
 	}
-
 }

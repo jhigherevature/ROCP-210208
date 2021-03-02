@@ -19,7 +19,7 @@ public class MainSimulator {
 				break selection;
 			}
 			case "2": {
-				EmployeeApplication.employeeActivities();
+				//EmployeeApplication.employeeActivities();
 				break selection;
 			}
 			case "3": {

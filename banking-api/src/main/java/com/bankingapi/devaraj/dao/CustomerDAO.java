@@ -10,7 +10,7 @@ public interface CustomerDAO {
 	public boolean createCustomerAccount(Customer customer);
 	public boolean updateCustomerAccount(Customer accountNumber);
 	public List<Customer> getAllCustomer();
-	public boolean deleteCustomerAccount(Customer accountNumber);
+	public boolean deleteCustomerfromPendingApproval(int customerId);
 	public int getCustomerId(String email, int ssn);
 	public List<CustomerAccountDetails> getCustomerAccountsDetails(String username, String password);
 	public List<CustomerAccountDetails> getAllCustomersAccountDetails();

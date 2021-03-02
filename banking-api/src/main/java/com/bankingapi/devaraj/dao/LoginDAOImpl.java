@@ -39,7 +39,7 @@ public class LoginDAOImpl implements LoginDAO {
 
 	@Override
 	public int getLoginid(String user, String password) {
-		log.info("create Login id invoked");
+		log.info("get Login id invoked");
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		int userId = 0;
@@ -78,7 +78,7 @@ public class LoginDAOImpl implements LoginDAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				if (rs.getString("login_user_name").equalsIgnoreCase(usereName)
-						&& rs.getString("login_password").equals(Password) && rs.getString("user_role").equals(user)) {
+						&& rs.getString("login_password").equals(Password) && user.equalsIgnoreCase(rs.getString("usr_role"))) {
 					loginStatus = true;
 				}
 			}

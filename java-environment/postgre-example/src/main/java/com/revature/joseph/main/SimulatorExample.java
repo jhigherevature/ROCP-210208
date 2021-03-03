@@ -12,15 +12,17 @@ public class SimulatorExample {
 		Scanner scan = new Scanner(System.in);
 		// Ask if employee/admin
 		
-		while () {
+		while (true) {
 			System.out.println("Are you an employee?");
 			String input = scan.nextLine();
 			if (input.toLowerCase() == "y" || input.toLowerCase() == "yes") {
 				// employee
 				doEmployeeStuff();
+				break;
 			} else if(input.toLowerCase() == "n" || input.toLowerCase() == "no") {
 				// customer
 				doCustomerStuff();
+				break;
 			} else {
 				System.out.println("I didn't recognize that");
 			}

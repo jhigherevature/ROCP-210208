@@ -17,7 +17,7 @@ import com.revature.joseph.model.Employee;
 public interface EmployeeDAO {
 	public Employee selectEmployee(Integer id);
 	public Employee selectEmployee(String name);
-	public Boolean insertIntoEmployees(Employee emp);
+	public Boolean insertIntoEmployees(Employee emp); // creates new record in Employee table
 	public List<Employee> selectAllEmployees();
 	public Boolean removeEmployee(Integer id);
 	public Boolean updateEmployee(Employee emp);

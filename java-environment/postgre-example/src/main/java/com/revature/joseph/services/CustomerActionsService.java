@@ -3,7 +3,7 @@ package com.revature.joseph.services;
 public class CustomerActionsService {
 	
 	// Use service layers to perform business logic!
-	public Double checkBalance(User usr, Account type) {
+//	public Double checkBalance(User usr, Account type) {
 		// query the DB (create the DAO object):
 		/*
 		 * When querying the DB >> get account based on user info.
@@ -16,6 +16,5 @@ public class CustomerActionsService {
 		 * }
 		 */
 		// return account.balance_column;
-		return 0.0;
-	}
+//	}
 }

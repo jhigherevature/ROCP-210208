@@ -11,6 +11,7 @@ public class LogSimulator {
 	}
 	
 	public static void loggingMethod() {
+		
 		log.trace("TRACE MESSAGE");
 		log.debug("DEBUG MESSAGE");
 		log.info("INFO MESSAGE");

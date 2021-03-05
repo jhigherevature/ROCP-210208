@@ -1,0 +1,28 @@
+If you cannot create servers, or generate a Deployment Desciptor, use the following steps Within STS:
+HELP [menu] >> Install New Software
+	"work with" Search for "Latest Eclipse Release"
+	
+	>> WEB, XML, Java EE and oSGI Enterprise Development
+		[] Eclipse Java EE Dev Tools
+		[] Eclipse Java Web Dev Tools
+		[] Eclipse Web Dev Tools
+
+
+To Enable Server View:
+WINDOW [menu] >> Show View >> Other... >> Servers > Server
+
+
+CREATE A SERVER:
+Right-Click on Project Explorer
+New >> Server >> Apache Tomcat 8.5 >> Select Tomcat Installation folder
+
+
+Create Maven Project:
+New >> Other... >> Maven Project 
+	[x] Create A Simple Project Checkbox
+	> Packaing >> Select 'war'
+
+	Right-click on the Project
+		>Java EE Tools >> "Generate Deployment Descriptor"
+	>Update POM
+	>Right-click >> Maven >> Update

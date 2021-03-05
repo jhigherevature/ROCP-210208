@@ -64,6 +64,6 @@ public class EmployeeDAOTest {
 	@Test
 	public void selectAllEmployees() {
 		Mockito.when(this.eDao.selectAllEmployees()).thenReturn(this.mockEmployees);
-		assertEquals(eDao.selectAllEmployees().get(1), mockEmployees.get(1));		
+		assertEquals(eDao.selectAllEmployees().get(1), mockEmployees.get(1));	
 	}
 }

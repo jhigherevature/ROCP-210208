@@ -24,6 +24,20 @@ public class MathOpsTest {
 	
 	public MathOps ops;
 	
+	/*
+	 * Test File and Annotation Order of Operations:
+	 * 1 - Test Will be loaded into JUnit
+	 * 	1.1 - some other work goes on in the background here
+	 * 2 - @BeforeClass method will execute
+	 * 	- @BeforeClass method is used for general setup across all tests
+	 * 3 - Create an Instance of your Test class (object)
+	 * 4 - Invoke the @Before annotated method
+	 * 	- @Before used to run some local setup before EVERY test
+	 * 5 - Invoke the @Test method (the first one found looking from top-bottom)
+	 * 6 - Invoke the @After method upon each test's completion.
+	 * 7 - After all tests complete, @AfterClass method will execute
+	 */
+	
 	@BeforeClass
 	public static void setUpBeforeClass() {
 		System.out.println("Before Class");
